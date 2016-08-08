@@ -1,0 +1,93 @@
+googleplaydownloader (2.0-1) unstable; urgency=low
+
+  * Update GooglePlay unofficial API from APKCrawler project (side project from OpenGApps)
+  * Update Androguard
+  * Download OBB files
+  * Remove Android ID generation (not working anymore)
+  * Remove packages dependencies
+  * Remove default credentials. You have to provide you own or download them from my website.
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 14 Jul 2016 17:28:13 +0200
+
+googleplaydownloader (1.8-1) unstable; urgency=low
+
+  * Update to sdk 23 (Android 6.0)
+  * Fix a few bugs
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 27 Sep 2015 17:28:13 +0200
+
+googleplaydownloader (1.7-1) unstable; urgency=low
+
+  * Get default credentials from developper website
+  * Towards pip package
+
+ -- Tuxicoman <debian@jesuislibre.net>  Thu, 8 Jan 2015 17:28:13 +0200
+
+googleplaydownloader (1.6-1) unstable; urgency=low
+
+  * New bundled credentials (old ones are banned)
+  * Fix error if the permissions of the download folder are not sufficient
+
+ -- Tuxicoman <debian@jesuislibre.net>  Thu, 20 Dec 2014 17:28:13 +0200
+
+googleplaydownloader (1.5-1) unstable; urgency=low
+
+  * New bundled credentials (old ones are banned)
+  * Dependencies compatible with Debian Jessie
+  * Python2 explicit call for those who have python3 as default
+  * Fix Android ID generation if JAVA has preprocess output.
+
+ -- Tuxicoman <debian@jesuislibre.net>  Thu, 3 Dec 2014 17:28:13 +0200
+
+googleplaydownloader (1.4-1) unstable; urgency=low
+
+  * New bundled credentials (old ones are banned)
+  * Add buttons to generate Android ID and to reset credentials to default values
+  * Newer user agent (maybe newer softwares will appear)
+  * Fix generation of Android ID
+  * Android-checkin.jar recompiled with protobuf 2.6.0
+
+ -- Tuxicoman <debian@jesuislibre.net>  Thu, 30 Oct 2014 17:28:13 +0200
+
+googleplaydownloader (1.3-1) unstable; urgency=low
+
+  * Fix SSL "TypeError: buf must be a byte string"
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 23 Sep 2014 17:28:13 +0200
+
+googleplaydownloader (1.2-1) unstable; urgency=low
+
+  * Upstream release
+  * Android 4.4 device
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 6 June 2014 17:28:13 +0200
+
+googleplaydownloader (1.1-1) unstable; urgency=low
+
+  * Upstream release
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 6 April 2014 17:28:13 +0200
+
+googleplaydownloader (1.0-3) unstable; urgency=low
+
+  * Fixes Lintian warnings
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 6 April 2014 16:28:13 +0200
+
+googleplaydownloader (1.0-2) unstable; urgency=low
+
+  * Downgrade requirements for older Ubuntu versions
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sat, 5 April 2014 16:28:13 +0200
+
+googleplaydownloader (1.0-1) unstable; urgency=low
+
+  * add config file to store user preferences
+
+ -- Tuxicoman <debian@jesuislibre.net>  Wed, 2 April 2014 16:28:13 +0200
+
+googleplaydownloader (0.5-1) unstable; urgency=low
+
+  * first Debian package
+
+ -- Tuxicoman <debian@jesuislibre.net>  Tue, 25 March 2014 16:28:13 +0200

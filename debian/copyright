@@ -1,0 +1,25 @@
+This work was packaged for Debian by Tuxicoman <debian@jesuislibre.net> on Tue, 25 March 2014 16:28:13 +0200
+
+It was downloaded from http://codingteam.net/project/googleplaydownloader/
+
+Upstream Authors:
+
+    Tuxicoman <debian@jesuislibre.net>
+
+Copyright:
+
+    Copyright (C) 2014 Tuxicoman
+
+License:
+
+    AGPL version 3
+    
+    The software is based on :
+    - googleplay-api to interact with Google PlayStore (https://github.com/egirault/googleplay-api/) BSD license
+    - androguard to read info info from local APKs on disk (http://code.google.com/p/androguard/) LGPL license
+    - android-checkin-1.0.jar to create AndroiID from Google credentials. (https://github.com/nviennot/android-checkin/) MIT license
+    These libs are packaged in the src/ext_libs folder for user convenience but are not part of this project.
+
+The Debian packaging is (C) 2014 Tuxicoman <debian@jesuislibre.net> and is licensed under the AGPL version 3, see "/usr/share/common-licenses/AGPL-3".
+
+
