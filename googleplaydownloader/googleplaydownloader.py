@@ -170,8 +170,8 @@ def download_selection(playstore_api, list_of_packages_to_download, dlg, return_
     else:
       for index, response in enumerate(responses):
         if response.body is None:
-          print ("Error while downloading %s : %s" % (packagename, exc))
-          failed_downloads.append((item, exc))
+          print ("Error while downloading %s" % packagename)
+          failed_downloads.append((item, "Empty response"))
           break
 
         elif index == 0:
