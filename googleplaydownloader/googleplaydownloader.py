@@ -452,11 +452,9 @@ class MainPanel(wx.Panel):
     AUTH_TOKEN = None
 
     api = GooglePlayAPI(androidId=config["android_ID"], lang=config["language"])
-    try :
-      api.login(config["gmail_address"], config["gmail_password"], AUTH_TOKEN)
-    except LoginError as exc:
-      print (exc.value)
-      dlg = wx.MessageDialog(self, "%s.\nUsing default credentials may solve the issue" % exc.value,'Connection to Play store failed', wx.OK | wx.ICON_INFORMATION)
+    token = api.login(config["gmail_address"], config["gmail_password"], AUTH_TOKEN)
+    if token is None :
+      dlg = wx.MessageDialog(self, "Play Store login failed.\nCheck that your credentials are valid.",'Connection to Play store failed', wx.OK | wx.ICON_INFORMATION)
       dlg.ShowModal()
       dlg.Destroy()
       success = False
