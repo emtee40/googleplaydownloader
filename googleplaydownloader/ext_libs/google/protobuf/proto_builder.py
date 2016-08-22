@@ -37,8 +37,8 @@ except ImportError:
 import hashlib
 import os
 
-from ext_libs.google.protobuf import descriptor_pb2
-from ext_libs.google.protobuf import message_factory
+from google.protobuf import descriptor_pb2
+from google.protobuf import message_factory
 
 
 def _GetMessageFromFactory(factory, full_name):

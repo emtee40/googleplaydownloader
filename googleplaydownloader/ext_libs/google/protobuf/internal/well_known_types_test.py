@@ -41,17 +41,17 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import any_pb2
-from ext_libs.google.protobuf import duration_pb2
-from ext_libs.google.protobuf import field_mask_pb2
-from ext_libs.google.protobuf import struct_pb2
-from ext_libs.google.protobuf import timestamp_pb2
-from ext_libs.google.protobuf import unittest_pb2
-from ext_libs.google.protobuf.internal import any_test_pb2
-from ext_libs.google.protobuf.internal import test_util
-from ext_libs.google.protobuf.internal import well_known_types
-from ext_libs.google.protobuf import descriptor
-from ext_libs.google.protobuf import text_format
+from google.protobuf import any_pb2
+from google.protobuf import duration_pb2
+from google.protobuf import field_mask_pb2
+from google.protobuf import struct_pb2
+from google.protobuf import timestamp_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf.internal import any_test_pb2
+from google.protobuf.internal import test_util
+from google.protobuf.internal import well_known_types
+from google.protobuf import descriptor
+from google.protobuf import text_format
 
 
 class TimeUtilTestBase(unittest.TestCase):

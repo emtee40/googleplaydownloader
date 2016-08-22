@@ -57,18 +57,18 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import map_unittest_pb2
-from ext_libs.google.protobuf import unittest_pb2
-from ext_libs.google.protobuf import unittest_proto3_arena_pb2
-from ext_libs.google.protobuf import descriptor_pb2
-from ext_libs.google.protobuf import descriptor_pool
-from ext_libs.google.protobuf import message_factory
-from ext_libs.google.protobuf import text_format
-from ext_libs.google.protobuf.internal import api_implementation
-from ext_libs.google.protobuf.internal import packed_field_test_pb2
-from ext_libs.google.protobuf.internal import test_util
-from ext_libs.google.protobuf import message
-from ext_libs.google.protobuf.internal import _parameterized
+from google.protobuf import map_unittest_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf import unittest_proto3_arena_pb2
+from google.protobuf import descriptor_pb2
+from google.protobuf import descriptor_pool
+from google.protobuf import message_factory
+from google.protobuf import text_format
+from google.protobuf.internal import api_implementation
+from google.protobuf.internal import packed_field_test_pb2
+from google.protobuf.internal import test_util
+from google.protobuf import message
+from google.protobuf.internal import _parameterized
 
 if six.PY3:
   long = int
@@ -1435,6 +1435,8 @@ class Proto3Test(unittest.TestCase):
     msg2.map_int32_int32[12] = 55
     msg2.map_int64_int64[88] = 99
     msg2.map_int32_foreign_message[222].c = 15
+    msg2.map_int32_foreign_message[222].d = 20
+    old_map_value = msg2.map_int32_foreign_message[222]
 
     msg2.MergeFrom(msg)
 
@@ -1444,6 +1446,8 @@ class Proto3Test(unittest.TestCase):
     self.assertEqual(99, msg2.map_int64_int64[88])
     self.assertEqual(5, msg2.map_int32_foreign_message[111].c)
     self.assertEqual(10, msg2.map_int32_foreign_message[222].c)
+    self.assertFalse(msg2.map_int32_foreign_message[222].HasField('d'))
+    self.assertEqual(15, old_map_value.c)
 
     # Verify that there is only one entry per key, even though the MergeFrom
     # may have internally created multiple entries for a single key in the
@@ -1833,7 +1837,7 @@ class OversizeProtosTest(unittest.TestCase):
     self.p_serialized = self.p.SerializeToString()
 
   def testAssertOversizeProto(self):
-    from ext_libs.google.protobuf.pyext._message import SetAllowOversizeProtos
+    from google.protobuf.pyext._message import SetAllowOversizeProtos
     SetAllowOversizeProtos(False)
     q = self.proto_cls()
     try:
@@ -1842,7 +1846,7 @@ class OversizeProtosTest(unittest.TestCase):
       self.assertEqual(str(e), 'Error parsing message')
 
   def testSucceedOversizeProto(self):
-    from ext_libs.google.protobuf.pyext._message import SetAllowOversizeProtos
+    from google.protobuf.pyext._message import SetAllowOversizeProtos
     SetAllowOversizeProtos(True)
     q = self.proto_cls()
     q.ParseFromString(self.p_serialized)

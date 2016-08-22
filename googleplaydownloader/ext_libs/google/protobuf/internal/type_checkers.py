@@ -50,11 +50,11 @@ import six
 if six.PY3:
   long = int
 
-from ext_libs.google.protobuf.internal import api_implementation
-from ext_libs.google.protobuf.internal import decoder
-from ext_libs.google.protobuf.internal import encoder
-from ext_libs.google.protobuf.internal import wire_format
-from ext_libs.google.protobuf import descriptor
+from google.protobuf.internal import api_implementation
+from google.protobuf.internal import decoder
+from google.protobuf.internal import encoder
+from google.protobuf.internal import wire_format
+from google.protobuf import descriptor
 
 _FieldDescriptor = descriptor.FieldDescriptor
 

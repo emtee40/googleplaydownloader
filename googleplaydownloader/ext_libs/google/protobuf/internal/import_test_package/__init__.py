@@ -30,4 +30,4 @@
 
 """Sample module importing a nested proto from itself."""
 
-from ext_libs.google.protobuf.internal.import_test_package import outer_pb2 as myproto
+from google.protobuf.internal.import_test_package import outer_pb2 as myproto

@@ -40,9 +40,9 @@ import os.path
 
 import sys
 
-from ext_libs.google.protobuf import unittest_import_pb2
-from ext_libs.google.protobuf import unittest_pb2
-from ext_libs.google.protobuf import descriptor_pb2
+from google.protobuf import unittest_import_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf import descriptor_pb2
 
 # Tests whether the given TestAllTypes message is proto2 or not.
 # This is used to gate several fields/features that only exist

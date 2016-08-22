@@ -39,15 +39,15 @@ try:
   import unittest2 as unittest  #PY26
 except ImportError:
   import unittest
-from ext_libs.google.protobuf import unittest_mset_pb2
-from ext_libs.google.protobuf import unittest_pb2
-from ext_libs.google.protobuf import unittest_proto3_arena_pb2
-from ext_libs.google.protobuf.internal import api_implementation
-from ext_libs.google.protobuf.internal import encoder
-from ext_libs.google.protobuf.internal import message_set_extensions_pb2
-from ext_libs.google.protobuf.internal import missing_enum_values_pb2
-from ext_libs.google.protobuf.internal import test_util
-from ext_libs.google.protobuf.internal import type_checkers
+from google.protobuf import unittest_mset_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf import unittest_proto3_arena_pb2
+from google.protobuf.internal import api_implementation
+from google.protobuf.internal import encoder
+from google.protobuf.internal import message_set_extensions_pb2
+from google.protobuf.internal import missing_enum_values_pb2
+from google.protobuf.internal import test_util
+from google.protobuf.internal import type_checkers
 
 
 def SkipIfCppImplementation(func):

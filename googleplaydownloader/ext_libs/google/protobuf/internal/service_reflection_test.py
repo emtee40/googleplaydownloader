@@ -40,9 +40,9 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import unittest_pb2
-from ext_libs.google.protobuf import service_reflection
-from ext_libs.google.protobuf import service
+from google.protobuf import unittest_pb2
+from google.protobuf import service_reflection
+from google.protobuf import service
 
 
 class FooUnitTest(unittest.TestCase):

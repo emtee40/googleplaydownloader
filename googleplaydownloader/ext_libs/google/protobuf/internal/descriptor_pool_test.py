@@ -42,21 +42,22 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import unittest_import_pb2
-from ext_libs.google.protobuf import unittest_import_public_pb2
-from ext_libs.google.protobuf import unittest_pb2
-from ext_libs.google.protobuf import descriptor_pb2
-from ext_libs.google.protobuf.internal import api_implementation
-from ext_libs.google.protobuf.internal import descriptor_pool_test1_pb2
-from ext_libs.google.protobuf.internal import descriptor_pool_test2_pb2
-from ext_libs.google.protobuf.internal import factory_test1_pb2
-from ext_libs.google.protobuf.internal import factory_test2_pb2
-from ext_libs.google.protobuf.internal import more_messages_pb2
-from ext_libs.google.protobuf import descriptor
-from ext_libs.google.protobuf import descriptor_database
-from ext_libs.google.protobuf import descriptor_pool
-from ext_libs.google.protobuf import message_factory
-from ext_libs.google.protobuf import symbol_database
+from google.protobuf import unittest_import_pb2
+from google.protobuf import unittest_import_public_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf import descriptor_pb2
+from google.protobuf.internal import api_implementation
+from google.protobuf.internal import descriptor_pool_test1_pb2
+from google.protobuf.internal import descriptor_pool_test2_pb2
+from google.protobuf.internal import factory_test1_pb2
+from google.protobuf.internal import factory_test2_pb2
+from google.protobuf.internal import file_options_test_pb2
+from google.protobuf.internal import more_messages_pb2
+from google.protobuf import descriptor
+from google.protobuf import descriptor_database
+from google.protobuf import descriptor_pool
+from google.protobuf import message_factory
+from google.protobuf import symbol_database
 
 
 class DescriptorPoolTest(unittest.TestCase):
@@ -630,6 +631,23 @@ class AddDescriptorTest(unittest.TestCase):
     self.assertEqual(pool.FindMessageTypeByName('package.Message').name,
                      'Message')
 
+  def testFileDescriptorOptionsWithCustomDescriptorPool(self):
+    # Create a descriptor pool, and add a new FileDescriptorProto to it.
+    pool = descriptor_pool.DescriptorPool()
+    file_name = 'file_descriptor_options_with_custom_descriptor_pool.proto'
+    file_descriptor_proto = descriptor_pb2.FileDescriptorProto(name=file_name)
+    extension_id = file_options_test_pb2.foo_options
+    file_descriptor_proto.options.Extensions[extension_id].foo_name = 'foo'
+    pool.Add(file_descriptor_proto)
+    # The options set on the FileDescriptorProto should be available in the
+    # descriptor even if they contain extensions that cannot be deserialized
+    # using the pool.
+    file_descriptor = pool.FindFileByName(file_name)
+    options = file_descriptor.GetOptions()
+    self.assertEqual('foo', options.Extensions[extension_id].foo_name)
+    # The object returned by GetOptions() is cached.
+    self.assertIs(options, file_descriptor.GetOptions())
+
 
 @unittest.skipIf(
     api_implementation.Type() != 'cpp',
@@ -638,7 +656,7 @@ class DefaultPoolTest(unittest.TestCase):
 
   def testFindMethods(self):
     # pylint: disable=g-import-not-at-top
-    from ext_libs.google.protobuf.pyext import _message
+    from google.protobuf.pyext import _message
     pool = _message.default_pool
     self.assertIs(
         pool.FindFileByName('google/protobuf/unittest.proto'),
@@ -661,7 +679,7 @@ class DefaultPoolTest(unittest.TestCase):
 
   def testAddFileDescriptor(self):
     # pylint: disable=g-import-not-at-top
-    from ext_libs.google.protobuf.pyext import _message
+    from google.protobuf.pyext import _message
     pool = _message.default_pool
     file_desc = descriptor_pb2.FileDescriptorProto(name='some/file.proto')
     pool.Add(file_desc)

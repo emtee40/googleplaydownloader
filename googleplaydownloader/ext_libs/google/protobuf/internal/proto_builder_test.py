@@ -41,10 +41,10 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import descriptor_pb2
-from ext_libs.google.protobuf import descriptor_pool
-from ext_libs.google.protobuf import proto_builder
-from ext_libs.google.protobuf import text_format
+from google.protobuf import descriptor_pb2
+from google.protobuf import descriptor_pool
+from google.protobuf import proto_builder
+from google.protobuf import text_format
 
 
 class ProtoBuilderTest(unittest.TestCase):

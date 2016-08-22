@@ -48,23 +48,17 @@ this file*.
 __author__ = 'robinson@google.com (Will Robinson)'
 
 
-from ext_libs.google.protobuf.internal import api_implementation
-from ext_libs.google.protobuf import message
+from google.protobuf.internal import api_implementation
+from google.protobuf import message
 
 
 if api_implementation.Type() == 'cpp':
-  from ext_libs.google.protobuf.pyext import cpp_message as message_impl
+  from google.protobuf.pyext import cpp_message as message_impl
 else:
-  from ext_libs.google.protobuf.internal import python_message as message_impl
+  from google.protobuf.internal import python_message as message_impl
 
 # The type of all Message classes.
-# Part of the public interface.
-#
-# Used by generated files, but clients can also use it at runtime:
-#   mydescriptor = pool.FindDescriptor(.....)
-#   class MyProtoClass(Message):
-#     __metaclass__ = GeneratedProtocolMessageType
-#     DESCRIPTOR = mydescriptor
+# Part of the public interface, but normally only used by message factories.
 GeneratedProtocolMessageType = message_impl.GeneratedProtocolMessageType
 
 

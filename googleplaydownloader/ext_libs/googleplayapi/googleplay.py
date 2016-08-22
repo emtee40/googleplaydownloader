@@ -9,12 +9,12 @@ import pprint
 import httplib
 import requests
 
-from ext_libs.google.protobuf import descriptor
-from ext_libs.google.protobuf.internal.containers import RepeatedCompositeFieldContainer
-from ext_libs.google.protobuf import text_format
-from ext_libs.google.protobuf.message import Message, DecodeError
+from google.protobuf import descriptor
+from google.protobuf.internal.containers import RepeatedCompositeFieldContainer
+from google.protobuf import text_format
+from google.protobuf.message import Message, DecodeError
 
-import googleplay_pb2
+import googleplayapi.googleplay_pb2
 
 
 class LoginError(Exception):
@@ -204,7 +204,7 @@ class GooglePlayAPI(object):
                 return (response.status_code, None)
             data = response.content
 
-        message = googleplay_pb2.ResponseWrapper.FromString(data)
+        message = googleplayapi.googleplay_pb2.ResponseWrapper.FromString(data)
         self._try_register_preFetch(message)
 
         return (response.status_code, message)
@@ -243,7 +243,7 @@ class GooglePlayAPI(object):
 
         packageNames is a list of app ID (usually starting with 'com.')."""
         path = "bulkDetails"
-        req = googleplay_pb2.BulkDetailsRequest()
+        req = googleplayapi.googleplay_pb2.BulkDetailsRequest()
         req.docid.extend(packageNames)
         data = req.SerializeToString()
         (status_code, message) = self.executeRequestApi2(path, datapost=data, post_content_type="application/x-protobuf")

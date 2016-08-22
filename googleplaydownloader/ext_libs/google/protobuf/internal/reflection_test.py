@@ -46,21 +46,21 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import unittest_import_pb2
-from ext_libs.google.protobuf import unittest_mset_pb2
-from ext_libs.google.protobuf import unittest_pb2
-from ext_libs.google.protobuf import descriptor_pb2
-from ext_libs.google.protobuf import descriptor
-from ext_libs.google.protobuf import message
-from ext_libs.google.protobuf import reflection
-from ext_libs.google.protobuf import text_format
-from ext_libs.google.protobuf.internal import api_implementation
-from ext_libs.google.protobuf.internal import more_extensions_pb2
-from ext_libs.google.protobuf.internal import more_messages_pb2
-from ext_libs.google.protobuf.internal import message_set_extensions_pb2
-from ext_libs.google.protobuf.internal import wire_format
-from ext_libs.google.protobuf.internal import test_util
-from ext_libs.google.protobuf.internal import decoder
+from google.protobuf import unittest_import_pb2
+from google.protobuf import unittest_mset_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf import descriptor_pb2
+from google.protobuf import descriptor
+from google.protobuf import message
+from google.protobuf import reflection
+from google.protobuf import text_format
+from google.protobuf.internal import api_implementation
+from google.protobuf.internal import more_extensions_pb2
+from google.protobuf.internal import more_messages_pb2
+from google.protobuf.internal import message_set_extensions_pb2
+from google.protobuf.internal import wire_format
+from google.protobuf.internal import test_util
+from google.protobuf.internal import decoder
 
 
 class _MiniDecoder(object):
@@ -972,6 +972,7 @@ class ReflectionTest(unittest.TestCase):
     proto.repeated_nested_message.add(bb=23)
     self.assertEqual(1, len(proto.repeated_nested_message))
     self.assertEqual(23, proto.repeated_nested_message[0].bb)
+    self.assertRaises(TypeError, proto.repeated_nested_message.add, 23)
 
   def testRepeatedCompositeRemove(self):
     proto = unittest_pb2.TestAllTypes()
@@ -1799,7 +1800,7 @@ class ReflectionTest(unittest.TestCase):
     # We import here since it's the import that used to fail, and we want
     # the failure to have the right context.
     # pylint: disable=g-import-not-at-top
-    from ext_libs.google.protobuf.internal import import_test_package
+    from google.protobuf.internal import import_test_package
     # pylint: enable=g-import-not-at-top
     msg = import_test_package.myproto.Outer()
     # Just check the default value.

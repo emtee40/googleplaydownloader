@@ -39,12 +39,12 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import descriptor_pb2
-from ext_libs.google.protobuf.internal import factory_test1_pb2
-from ext_libs.google.protobuf.internal import factory_test2_pb2
-from ext_libs.google.protobuf import descriptor_database
-from ext_libs.google.protobuf import descriptor_pool
-from ext_libs.google.protobuf import message_factory
+from google.protobuf import descriptor_pb2
+from google.protobuf.internal import factory_test1_pb2
+from google.protobuf.internal import factory_test2_pb2
+from google.protobuf import descriptor_database
+from google.protobuf import descriptor_pool
+from google.protobuf import message_factory
 
 
 class MessageFactoryTest(unittest.TestCase):

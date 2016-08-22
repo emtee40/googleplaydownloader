@@ -39,8 +39,8 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import message
-from ext_libs.google.protobuf.internal import wire_format
+from google.protobuf import message
+from google.protobuf.internal import wire_format
 
 
 class WireFormatTest(unittest.TestCase):

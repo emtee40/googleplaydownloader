@@ -39,9 +39,9 @@ my_proto_instance = message_classes['some.proto.package.MessageName']()
 
 __author__ = 'matthewtoia@google.com (Matt Toia)'
 
-from ext_libs.google.protobuf import descriptor_pool
-from ext_libs.google.protobuf import message
-from ext_libs.google.protobuf import reflection
+from google.protobuf import descriptor_pool
+from google.protobuf import message
+from google.protobuf import reflection
 
 
 class MessageFactory(object):

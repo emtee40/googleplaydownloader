@@ -44,7 +44,7 @@ from datetime import datetime
 from datetime import timedelta
 import six
 
-from ext_libs.google.protobuf.descriptor import FieldDescriptor
+from google.protobuf.descriptor import FieldDescriptor
 
 _TIMESTAMPFOMAT = '%Y-%m-%dT%H:%M:%S'
 _NANOS_PER_SECOND = 1000000000

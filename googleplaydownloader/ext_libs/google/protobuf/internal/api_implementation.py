@@ -37,7 +37,7 @@ import sys
 
 try:
   # pylint: disable=g-import-not-at-top
-  from ext_libs.google.protobuf.internal import _api_implementation
+  from google.protobuf.internal import _api_implementation
   # The compile-time constants in the _api_implementation module can be used to
   # switch to a certain implementation of the Python API at build time.
   _api_version = _api_implementation.api_version
@@ -54,7 +54,7 @@ if _api_version < 0:  # Still unspecified?
     # be upgraded merely via build deps rather than a compiler flag or the
     # runtime environment variable.
     # pylint: disable=g-import-not-at-top
-    from ext_libs.google.protobuf import _use_fast_cpp_protos
+    from google.protobuf import _use_fast_cpp_protos
     # Work around a known issue in the classic bootstrap .par import hook.
     if not _use_fast_cpp_protos:
       raise ImportError('_use_fast_cpp_protos import succeeded but was None')

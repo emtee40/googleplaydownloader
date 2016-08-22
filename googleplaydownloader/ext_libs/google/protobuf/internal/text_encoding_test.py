@@ -37,7 +37,7 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import text_encoding
+from google.protobuf import text_encoding
 
 TEST_VALUES = [
     ("foo\\rbar\\nbaz\\t",

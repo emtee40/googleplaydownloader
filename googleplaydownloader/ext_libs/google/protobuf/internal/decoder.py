@@ -87,9 +87,9 @@ import six
 if six.PY3:
   long = int
 
-from ext_libs.google.protobuf.internal import encoder
-from ext_libs.google.protobuf.internal import wire_format
-from ext_libs.google.protobuf import message
+from google.protobuf.internal import encoder
+from google.protobuf.internal import wire_format
+from google.protobuf import message
 
 
 # This will overflow and thus become IEEE-754 "infinity".  We would use

@@ -39,9 +39,9 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf import descriptor_pb2
-from ext_libs.google.protobuf.internal import factory_test2_pb2
-from ext_libs.google.protobuf import descriptor_database
+from google.protobuf import descriptor_pb2
+from google.protobuf.internal import factory_test2_pb2
+from google.protobuf import descriptor_database
 
 
 class DescriptorDatabaseTest(unittest.TestCase):

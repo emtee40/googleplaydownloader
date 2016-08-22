@@ -46,16 +46,16 @@ try:
 except ImportError:
   import unittest
 
-from ext_libs.google.protobuf.internal import test_bad_identifiers_pb2
-from ext_libs.google.protobuf import unittest_custom_options_pb2
-from ext_libs.google.protobuf import unittest_import_pb2
-from ext_libs.google.protobuf import unittest_import_public_pb2
-from ext_libs.google.protobuf import unittest_mset_pb2
-from ext_libs.google.protobuf import unittest_mset_wire_format_pb2
-from ext_libs.google.protobuf import unittest_no_generic_services_pb2
-from ext_libs.google.protobuf import unittest_pb2
-from ext_libs.google.protobuf import service
-from ext_libs.google.protobuf import symbol_database
+from google.protobuf.internal import test_bad_identifiers_pb2
+from google.protobuf import unittest_custom_options_pb2
+from google.protobuf import unittest_import_pb2
+from google.protobuf import unittest_import_public_pb2
+from google.protobuf import unittest_mset_pb2
+from google.protobuf import unittest_mset_wire_format_pb2
+from google.protobuf import unittest_no_generic_services_pb2
+from google.protobuf import unittest_pb2
+from google.protobuf import service
+from google.protobuf import symbol_database
 
 MAX_EXTENSION = 536870912
 

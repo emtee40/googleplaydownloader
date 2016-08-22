@@ -20,8 +20,11 @@ import webbrowser
 HERE = os.path.abspath(os.path.dirname(__file__))
 _icons_path = os.path.join(HERE, 'img')
 
-from ext_libs.googleplay_api.googleplay import GooglePlayAPI #GooglePlayAPI
-from ext_libs.googleplay_api.googleplay import LoginError
+#As ext_libs to Python sys path to not need to prefix the module calls
+sys.path.insert(0, os.path.join(HERE, "ext_libs"))
+
+from googleplayapi.googleplay import GooglePlayAPI #GooglePlayAPI
+from googleplayapi.googleplay import LoginError
 from ext_libs.androguard.core.bytecodes import apk as androguard_apk #Androguard
 
 
