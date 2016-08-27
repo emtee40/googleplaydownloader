@@ -519,7 +519,7 @@ class ConfigDialog(wx.Dialog):
     text_size = 250
     self.sizer = sizer = wx.BoxSizer(wx.VERTICAL)
 
-    self.webpage_button = wx.Button(self, -1, "Get free crendentials")
+    self.webpage_button = wx.Button(self, -1, "Get free credentials")
     self.Bind(wx.EVT_BUTTON, lambda e: self.get_default_credentials(), self.webpage_button)
 
     sizer.Add(self.webpage_button, 0, wx.ALL, 5)
