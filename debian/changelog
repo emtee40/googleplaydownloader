@@ -1,9 +1,16 @@
+googleplaydownloader (2.2-1) unstable; urgency=low
+
+  * Fix conflict with google.protobuf python module that could have been installed in the system (python-protobuf DEB package)
+  * Add error message if search request failed.
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 27 Aug 2016 22:28:13 +0200
+
 googleplaydownloader (2.1-1) unstable; urgency=low
 
   * Update GooglePlay unofficial API from APKCrawler project (side project from OpenGApps)
   * Better error checks.
 
- -- Tuxicoman <debian@jesuislibre.net>  Sun, 14 Jul 2016 17:28:13 +0200
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 27 Aug 2016 17:28:13 +0200
 
 googleplaydownloader (2.0-1) unstable; urgency=low
 
