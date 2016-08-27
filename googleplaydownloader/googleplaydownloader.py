@@ -543,7 +543,7 @@ class ConfigDialog(wx.Dialog):
     gridSizer.Add(label,0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
     gridSizer.Add(self.gmail_password,1, wx.EXPAND|wx.ALIGN_CENTRE|wx.ALL, 5)
 
-    label = wx.StaticText(self, -1, "Google Framework Service ID:")
+    label = wx.StaticText(self, -1, "Google Framework Service key:")
     self.custom_widgets.append(label)
     self.GSF_ID = wx.TextCtrl(self, -1, "", size=(text_size,-1))
     self.custom_widgets.append(self.GSF_ID)
