@@ -332,7 +332,9 @@ class MainPanel(wx.Panel):
     #Query results
     response = self.playstore_api.search(search_string, nb_results=nb_results).body
     if response is None:
-      print("Error while searching")
+      dlg = wx.MessageDialog(self, "Search request failed.\nCheck that your credentials are valid.",'Error during search', wx.OK | wx.ICON_INFORMATION)
+      dlg.ShowModal()
+      dlg.Destroy()
       return
     else:
       results = response.doc
