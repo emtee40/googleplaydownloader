@@ -1,3 +1,10 @@
+googleplaydownloader (2.1-1) unstable; urgency=low
+
+  * Update GooglePlay unofficial API from APKCrawler project (side project from OpenGApps)
+  * Better error checks.
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 14 Jul 2016 17:28:13 +0200
+
 googleplaydownloader (2.0-1) unstable; urgency=low
 
   * Update GooglePlay unofficial API from APKCrawler project (side project from OpenGApps)

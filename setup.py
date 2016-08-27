@@ -18,7 +18,7 @@ HERE = os.path.abspath(os.path.dirname(__file__))
 with open(os.path.join(HERE, "googleplaydownloader", "version.txt"), "r") as f:
     VERSION = f.read().strip()
 
-with codecs.open(os.path.join(HERE, 'README.txt'), encoding='utf-8') as f:
+with codecs.open(os.path.join(HERE, 'README'), encoding='utf-8') as f:
     LONG_DESCRIPTION = f.read()
 
 setup(

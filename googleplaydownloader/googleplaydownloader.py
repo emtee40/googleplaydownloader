@@ -34,7 +34,7 @@ def default_values(input_dict):
   config_dict = {}
   config_dict["download_folder_path"] = os.path.expanduser('~')
   config_dict["language"] = "fr_FR"
-  config_dict["android_ID"] = ""
+  config_dict["GSF_ID"] = ""
   config_dict["gmail_password"]= ""
   config_dict["gmail_address"] = ""
 
@@ -396,7 +396,7 @@ class MainPanel(wx.Panel):
     if val == wx.ID_OK:
       #Get data
       config["language"] = dlg.language.GetValue()
-      config["android_ID"] = dlg.android_ID.GetValue()
+      config["GSF_ID"] = dlg.GSF_ID.GetValue()
       config["gmail_address"] = dlg.gmail_address.GetValue()
       config["gmail_password"] = dlg.gmail_password.GetValue()
 
@@ -454,7 +454,7 @@ class MainPanel(wx.Panel):
   def connect_to_googleplay_api(self):
     AUTH_TOKEN = None
 
-    api = GooglePlayAPI(androidId=config["android_ID"], lang=config["language"])
+    api = GooglePlayAPI(androidId=config["GSF_ID"], lang=config["language"])
     token = api.login(config["gmail_address"], config["gmail_password"], AUTH_TOKEN)
     if token is None :
       dlg = wx.MessageDialog(self, "Play Store login failed.\nCheck that your credentials are valid.",'Connection to Play store failed', wx.OK | wx.ICON_INFORMATION)
@@ -543,12 +543,12 @@ class ConfigDialog(wx.Dialog):
     gridSizer.Add(label,0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
     gridSizer.Add(self.gmail_password,1, wx.EXPAND|wx.ALIGN_CENTRE|wx.ALL, 5)
 
-    label = wx.StaticText(self, -1, "Android ID:")
+    label = wx.StaticText(self, -1, "Google Framework Service ID:")
     self.custom_widgets.append(label)
-    self.android_ID = wx.TextCtrl(self, -1, "", size=(text_size,-1))
-    self.custom_widgets.append(self.android_ID)
+    self.GSF_ID = wx.TextCtrl(self, -1, "", size=(text_size,-1))
+    self.custom_widgets.append(self.GSF_ID)
     gridSizer.Add(label,0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
-    gridSizer.Add(self.android_ID,1, wx.EXPAND|wx.ALIGN_CENTRE|wx.ALL, 5)
+    gridSizer.Add(self.GSF_ID,1, wx.EXPAND|wx.ALIGN_CENTRE|wx.ALL, 5)
 
     label = wx.StaticText(self, -1, "Language:")
     self.custom_widgets.append(label)
@@ -574,7 +574,7 @@ class ConfigDialog(wx.Dialog):
   def fill_data(self):
     #Fill data
     self.language.SetValue(config["language"])
-    self.android_ID.SetValue(config["android_ID"])
+    self.GSF_ID.SetValue(config["GSF_ID"])
     self.gmail_address.SetValue(config["gmail_address"])
     self.gmail_password.SetValue(config["gmail_password"])
 
