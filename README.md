@@ -4,6 +4,8 @@ GooglePlayDownloader is a graphical software to download APKs from the Google Pl
 
 I ever wanted to get applications from the Google Play store but didn't like my android AOSP system being tainted by Google root services neither being filed in the Google account database.
 
+![alt tag](https://framagit.org/tuxicoman/googleplaydownloader/raw/62bc432e6e00336af0387d60a003eb793be383d7/website/googleplaydownloader.png)
+
 # License
 The software is based on :
 - googleplay-api to interact with Google PlayStore (https://github.com/egirault/googleplay-api/) BSD license
