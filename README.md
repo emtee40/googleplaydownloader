@@ -6,6 +6,10 @@ I ever wanted to get applications from the Google Play store but didn't like my 
 
 ![alt tag](https://framagit.org/tuxicoman/googleplaydownloader/raw/62bc432e6e00336af0387d60a003eb793be383d7/website/googleplaydownloader.png)
 
+# Current version
+
+Current version is 2.3 (25/09/2016). Check in the repository/packages for Debian .deb installers
+
 # License
 The software is based on :
 - googleplay-api to interact with Google PlayStore (https://github.com/egirault/googleplay-api/) BSD license
