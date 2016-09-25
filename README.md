@@ -28,6 +28,7 @@ The GUI (googleplaydownloader.py) is under AGPL licence (copyright Tuxicoman)
  
 
   You can install them through your package manager. For example on Debian :
+  
   # apt-get install python-wxgtk2.8 python-requests python-pyasn1 default-jre
 
 # Use
