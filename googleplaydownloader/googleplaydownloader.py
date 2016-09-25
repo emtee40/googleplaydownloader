@@ -26,6 +26,7 @@ sys.path.insert(0, os.path.join(HERE, "ext_libs"))
 from googleplayapi.googleplay import GooglePlayAPI #GooglePlayAPI
 from googleplayapi.googleplay import LoginError
 from ext_libs.androguard.core.bytecodes import apk as androguard_apk #Androguard
+import ext_libs.dummydroid
 
 
 config = {}
@@ -425,9 +426,7 @@ class MainPanel(wx.Panel):
 
   def after_download(self, failed_downloads):
     #Info message
-    if len(failed_downloads) == 0 :
-      message = "Download complete"
-    else:
+    if len(failed_downloads) != 0 :
       message = "A few packages could not be downloaded :"
       for item, exception in failed_downloads:
         package_name, filename = item
@@ -437,10 +436,10 @@ class MainPanel(wx.Panel):
           message += "\n%s" % package_name
         message += "\n%s\n" % exception
 
-    #Show info dialog
-    dlg = wx.MessageDialog(self, message,'Download report', wx.OK | wx.ICON_INFORMATION)
-    dlg.ShowModal()
-    dlg.Destroy()
+      #Show info dialog
+      dlg = wx.MessageDialog(self, message,'Download report', wx.OK | wx.ICON_INFORMATION)
+      dlg.ShowModal()
+      dlg.Destroy()
 
   def ask_download_folder_path(self):
     dlg = wx.DirDialog(self, "Choose a download folder:",  defaultPath = config["download_folder_path"], style=wx.DD_DEFAULT_STYLE)
@@ -521,12 +520,7 @@ class ConfigDialog(wx.Dialog):
     text_size = 250
     self.sizer = sizer = wx.BoxSizer(wx.VERTICAL)
 
-    self.webpage_button = wx.Button(self, -1, "Get free credentials")
-    self.Bind(wx.EVT_BUTTON, lambda e: self.get_default_credentials(), self.webpage_button)
-
-    sizer.Add(self.webpage_button, 0, wx.ALL, 5)
-
-    self.gridSizer = gridSizer = wx.FlexGridSizer(rows=4, cols=2, hgap=5, vgap=5)
+    self.gridSizer = gridSizer = wx.FlexGridSizer(rows=4, cols=3, hgap=5, vgap=5)
     sizer.Add(self.gridSizer, 0, wx.GROW|wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5)
 
     self.custom_widgets = []
@@ -537,6 +531,7 @@ class ConfigDialog(wx.Dialog):
     self.custom_widgets.append(self.gmail_address)
     gridSizer.Add(label,0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
     gridSizer.Add(self.gmail_address,1, wx.EXPAND|wx.ALIGN_CENTRE|wx.ALL, 5)
+    gridSizer.Add(wx.StaticText(self, -1, ""),0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
 
     label = wx.StaticText(self, -1, "Gmail password:")
     self.custom_widgets.append(label)
@@ -544,6 +539,7 @@ class ConfigDialog(wx.Dialog):
     self.custom_widgets.append(self.gmail_password)
     gridSizer.Add(label,0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
     gridSizer.Add(self.gmail_password,1, wx.EXPAND|wx.ALIGN_CENTRE|wx.ALL, 5)
+    gridSizer.Add(wx.StaticText(self, -1, ""),0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
 
     label = wx.StaticText(self, -1, "Google Framework Service key:")
     self.custom_widgets.append(label)
@@ -552,12 +548,18 @@ class ConfigDialog(wx.Dialog):
     gridSizer.Add(label,0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
     gridSizer.Add(self.GSF_ID,1, wx.EXPAND|wx.ALIGN_CENTRE|wx.ALL, 5)
 
+
+    self.generate_gfs_button = wx.Button(self, -1, "Generate")
+    self.Bind(wx.EVT_BUTTON, lambda e: self.generate_gfs(), self.generate_gfs_button)
+    gridSizer.Add(self.generate_gfs_button, 0, wx.ALL, 5)
+
     label = wx.StaticText(self, -1, "Language:")
     self.custom_widgets.append(label)
     self.language = wx.TextCtrl(self, -1, "", size=(text_size,-1))
     self.custom_widgets.append(self.language)
     gridSizer.Add(label,0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
     gridSizer.Add(self.language,1, wx.EXPAND|wx.ALIGN_CENTRE|wx.ALL, 5)
+    gridSizer.Add(wx.StaticText(self, -1, ""),0, wx.ALIGN_CENTER_VERTICAL|wx.LEFT,5)
 
     line = wx.StaticLine(self, -1, size=(20,-1), style=wx.LI_HORIZONTAL)
     sizer.Add(line, 0, wx.GROW|wx.ALIGN_CENTER_VERTICAL|wx.RIGHT|wx.TOP, 5)
@@ -580,9 +582,16 @@ class ConfigDialog(wx.Dialog):
     self.gmail_address.SetValue(config["gmail_address"])
     self.gmail_password.SetValue(config["gmail_password"])
 
-  def get_default_credentials(self):
-    url = "https://tuxicoman.jesuislibre.net/logiciels/googleplaydownloader-credentials"
-    webbrowser.open(url)
+  def generate_gfs(self):
+    java_bin = subprocess.check_output("which java", shell=True)
+    if len(java_bin) == 0:
+      dlg = wx.MessageDialog(self, "You need Java runtime to be installed to generate Google Framework keys",'Missing', wx.OK | wx.ICON_INFORMATION)
+      dlg.ShowModal()
+      dlg.Destroy()
+    else:
+      dummydroid_path = os.path.dirname(ext_libs.dummydroid.__file__)
+      command = "cd %s;java -jar DummyDroid-1.1.jar" % dummydroid_path
+      subprocess.Popen(command, shell=True)
 
 
 class MainFrame(wx.Frame):

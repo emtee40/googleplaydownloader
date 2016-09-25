@@ -37,5 +37,5 @@ setup(
     'pyasn1',
     'configparser',
   ],
-	package_data={'googleplaydownloader': ["version.txt", 'img/icon.ico', "ext_libs/android-checkin/target/android-checkin-jb-jar-with-dependencies.jar"]}
+	package_data={'googleplaydownloader': ["version.txt", 'img/icon.ico', "ext_libs/dummydroid/DummyDroid-1.1.jar","ext_libs/dummydroid/nexus5x.prop"]}
 	)

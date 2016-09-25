@@ -1,3 +1,9 @@
+googleplaydownloader (2.3-1) unstable; urgency=low
+
+  * Bundle dummydroid (java required) to generate Google Framework service keys
+
+ -- Tuxicoman <debian@jesuislibre.net>  Sun, 25 Sep 2016 22:28:13 +0200
+
 googleplaydownloader (2.2-1) unstable; urgency=low
 
   * Fix conflict with google.protobuf python module that could have been installed in the system (python-protobuf DEB package)
