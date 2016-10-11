@@ -28,7 +28,7 @@ setup(
   long_description=LONG_DESCRIPTION,
 	author="Tuxicoman",
 	author_email="debian@jesuislibre.net",
-	url="http://codingteam.net/project/googleplaydownloader",
+	url="https://framagit.org/tuxicoman/googleplaydownloader",
 	license="AGPL",
   packages=find_packages(),
   entry_points={'gui_scripts': ['googleplaydownloader = googleplaydownloader:start_gui'], },
