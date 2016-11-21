@@ -1,3 +1,9 @@
+googleplaydownloader (2.4-1) unstable; urgency=low
+
+  * Debian Strech version
+
+ -- Tuxicoman <debian@jesuislibre.net>  Mon, 21 Nov 2016 22:28:13 +0200
+
 googleplaydownloader (2.3-1) unstable; urgency=low
 
   * Bundle dummydroid (java required) to generate Google Framework service keys
