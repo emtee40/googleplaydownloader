@@ -8,7 +8,7 @@ I ever wanted to get applications from the Google Play store but didn't like my 
 
 # Current version
 
-Current version is 2.3 (25/09/2016). Check in the repository/packages for Debian .deb installers
+Current version is 2.4 (21/11/2016). Check in the repository/packages for Debian .deb installers
 
 # License
 The software is based on :
@@ -25,6 +25,9 @@ The GUI (googleplaydownloader.py) is under AGPL licence (copyright Tuxicoman)
   - python-requests (>=0.12)
   - python-pyasn1 for SSL connections
   - python-wxgtk (>=2.8) for the GUI
+  - python-protobuf (>=3.0)
+  - androguard
+  - dummydroid
   - python2 (>=2.7)
   
   Recommends:

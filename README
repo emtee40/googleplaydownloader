@@ -19,6 +19,9 @@ The GUI (googleplaydownloader.py) is under AGPL licence (copyright Tuxicoman)
   - python-requests (>=0.12)
   - python-pyasn1 for SSL connections
   - python-wxgtk (>=2.8) for the GUI
+  - python-protobuf (>=3.0)
+  - androguard
+  - dummydroid
   - python2 (>=2.7)
 
   You can install them through your package manager. For example on Debian :
