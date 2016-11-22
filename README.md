@@ -9,9 +9,12 @@ I ever wanted to get applications from the Google Play store but didn't like my 
 # Current version
 
 Current version is 2.4 (21/11/2016). 
+
 Check in the repository/packages for Debian .deb installers
-2.4 is designed for Debian Strech (currently testing)
-2.3 is for Debian 8 (currently stable).
+
+v2.4 is designed for Debian Strech (currently testing)
+
+v2.3 is for Debian 8 (currently stable).
 
 # License
 The software is based on :
