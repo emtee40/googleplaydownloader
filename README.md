@@ -14,7 +14,7 @@ Check in the repository/packages for Debian .deb installers
 
 v2.4 is designed for Debian Strech (currently testing)
 
-v2.3 is for Debian 8 (currently stable).
+v2.3 is for Debian 8 (currently stable) and include python-protobuf, androguard and dummydroid as they are not available in Debian 8 repositories.
 
 # License
 The software is based on :
