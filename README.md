@@ -29,9 +29,6 @@ The GUI (googleplaydownloader.py) is under AGPL licence (copyright Tuxicoman)
   - androguard
   - dummydroid
   - python2 (>=2.7)
-  
-  Recommends:
-  - default-jre for generating Googleplay Framework Service keys
  
 
   You can install them through your package manager. For example on Debian :
