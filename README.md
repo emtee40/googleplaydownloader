@@ -8,13 +8,11 @@ I ever wanted to get applications from the Google Play store but didn't like my 
 
 # Current version
 
-Current version is 2.4 (21/11/2016). 
-
 Check in the repository/packages for Debian .deb installers
 
 v2.4 is designed for Debian Strech (currently testing)
 
-v2.3 is for Debian 8 (currently stable) and includes python-protobuf, androguard and dummydroid as they are not available in Debian 8 repositories.
+For older distribution (Debian 8, Ubuntu 16.04 and below), use the v2.3 which includes python-protobuf, androguard and dummydroid.
 
 # License
 The software is based on :
