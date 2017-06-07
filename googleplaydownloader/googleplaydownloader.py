@@ -20,13 +20,33 @@ import webbrowser
 HERE = os.path.abspath(os.path.dirname(__file__))
 _icons_path = os.path.join(HERE, 'img')
 
-#As ext_libs to Python sys path to not need to prefix the module calls
-sys.path.insert(0, os.path.join(HERE, "ext_libs"))
+use_custom_libs=False
+if use_custom_libs:
+  #As ext_libs to Python sys path to not need to prefix the module calls
+  sys.path.insert(0, os.path.join(HERE, "ext_libs"))
 
-from googleplayapi.googleplay import GooglePlayAPI #GooglePlayAPI
-from googleplayapi.googleplay import LoginError
-from ext_libs.androguard.core.bytecodes import apk as androguard_apk #Androguard
-import ext_libs.dummydroid
+  #Androguard
+  from ext_libs.androguard.core.bytecodes import apk as androguard_apk 
+  
+  #Dummydroid
+  import ext_libs.dummydroid
+  dummydroid_path = os.path.dirname(ext_libs.dummydroid.__file__)
+  dummydroid_command = "cd %s;java -jar DummyDroid-1.1.jar" % dummydroid_path
+  
+  #GooglePlayAPI
+  from googleplayapi.googleplay import GooglePlayAPI 
+  from googleplayapi.googleplay import LoginError
+else:
+  #Use system libs
+  from androguard.core.bytecodes import apk as androguard_apk
+  dummydroid_command ="dummydroid"
+  
+  #GooglePlayAPI
+  sys.path.insert(0, os.path.join(HERE, "ext_libs", "googleplayapi"))
+  from googleplay import GooglePlayAPI 
+  from googleplay import LoginError
+  
+  
 
 
 config = {}
@@ -589,9 +609,7 @@ class ConfigDialog(wx.Dialog):
       dlg.ShowModal()
       dlg.Destroy()
     else:
-      dummydroid_path = os.path.dirname(ext_libs.dummydroid.__file__)
-      command = "cd %s;java -jar DummyDroid-1.1.jar" % dummydroid_path
-      subprocess.Popen(command, shell=True)
+      subprocess.Popen(dummydroid_command, shell=True)
 
 
 class MainFrame(wx.Frame):

@@ -8,7 +8,11 @@ I ever wanted to get applications from the Google Play store but didn't like my 
 
 # Current version
 
-Current version is 2.3 (25/09/2016). Check in the repository/packages for Debian .deb installers
+Check in the repository/packages for Debian .deb installers
+
+v2.4 is designed for Debian Strech (currently testing)
+
+For older distribution (Debian 8, Ubuntu 16.04 and below), use the v2.3 which includes python-protobuf, androguard and dummydroid.
 
 # License
 The software is based on :
@@ -25,10 +29,10 @@ The GUI (googleplaydownloader.py) is under AGPL licence (copyright Tuxicoman)
   - python-requests (>=0.12)
   - python-pyasn1 for SSL connections
   - python-wxgtk (>=2.8) for the GUI
+  - python-protobuf (>=3.0)
+  - androguard
+  - dummydroid
   - python2 (>=2.7)
-  
-  Recommends:
-  - default-jre for generating Googleplay Framework Service keys
  
 
   You can install them through your package manager. For example on Debian :

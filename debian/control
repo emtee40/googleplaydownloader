@@ -9,8 +9,7 @@ X-Python-Version: >= 2.7
 
 Package: googleplaydownloader
 Architecture: all
-Depends: ${python:Depends}, python (>=2.7), python-wxgtk3.0|python-wxgtk2.8, python-requests (>=0.12), python-pyasn1
-Recommends: default-jre
+Depends: ${python:Depends}, python (>=2.7), python-wxgtk3.0|python-wxgtk2.8, python-requests (>=0.12), python-pyasn1, dummydroid, androguard, python-protobuf(>=3.0)
 Description: Google Play Downloader
  Download Android application APK from Google Play Store
  without any personal Google account.

@@ -36,6 +36,8 @@ setup(
     'requests>=0.12',
     'pyasn1',
     'configparser',
+    'androguard',
+    'protobuf'
   ],
-	package_data={'googleplaydownloader': ["version.txt", 'img/icon.ico', "ext_libs/dummydroid/DummyDroid-1.1.jar","ext_libs/dummydroid/nexus5x.prop"]}
+	package_data={'googleplaydownloader': ["version.txt", 'img/icon.ico']}
 	)
