@@ -6,7 +6,7 @@ import json
 import gzip
 import logging
 import pprint
-import httplib
+import http.client
 import requests
 
 from google.protobuf import descriptor
@@ -151,7 +151,7 @@ class GooglePlayAPI(object):
                     "Accept-Encoding": "gzip, deflate",
                 }
                 response = requests.post(self.URL_LOGIN, data=params, headers=headers, proxies=proxy, verify=True)
-                if response.status_code != httplib.OK:
+                if response.status_code != http.client.OK:
                     logging.error('{0} Play Store login failed, statuscode {1}: {2}'.format(self.androidId, response.status_code, response.content))
                 else:
                     data = response.text.split()
@@ -200,7 +200,7 @@ class GooglePlayAPI(object):
                 response = requests.post(url, data=str(datapost), headers=headers, proxies=self.proxy_dict, verify=True)
             else:
                 response = requests.get(url, headers=headers, proxies=self.proxy_dict, verify=True)
-            if response.status_code != httplib.OK:
+            if response.status_code != http.client.OK:
                 return (response.status_code, None)
             data = response.content
 
@@ -222,7 +222,7 @@ class GooglePlayAPI(object):
             path += "&o=%d" % int(offset)
 
         (status_code, message) = self.executeRequestApi2(path)
-        if status_code == httplib.OK:
+        if status_code == http.client.OK:
             return RequestResult(status_code, message.payload.searchResponse)
         return RequestResult(status_code, None)
 
@@ -231,7 +231,7 @@ class GooglePlayAPI(object):
         packageName is the app unique ID (usually starting with 'com.')."""
         path = "details?doc=%s" % requests.utils.quote(packageName)
         (status_code, message) = self.executeRequestApi2(path)
-        if status_code == httplib.OK:
+        if status_code == http.client.OK:
             return RequestResult(status_code, message.payload.detailsResponse)
         return RequestResult(status_code, None)
 
@@ -247,7 +247,7 @@ class GooglePlayAPI(object):
         req.docid.extend(packageNames)
         data = req.SerializeToString()
         (status_code, message) = self.executeRequestApi2(path, datapost=data, post_content_type="application/x-protobuf")
-        if status_code == httplib.OK:
+        if status_code == http.client.OK:
             return RequestResult(status_code, message.payload.bulkDetailsResponse)
         return RequestResult(status_code, None)
 
@@ -260,7 +260,7 @@ class GooglePlayAPI(object):
         if ctr is not None:
             path += "&ctr=%s" % requests.utils.quote(ctr)
         (status_code, message) = self.executeRequestApi2(path)
-        if status_code == httplib.OK:
+        if status_code == http.client.OK:
             return RequestResult(status_code, message.payload.browseResponse)
         return RequestResult(status_code, None)
 
@@ -278,7 +278,7 @@ class GooglePlayAPI(object):
         if offset is not None:
             path += "&o=%s" % int(offset)
         (status_code, message) = self.executeRequestApi2(path)
-        if status_code == httplib.OK:
+        if status_code == http.client.OK:
             return RequestResult(status_code, message.payload.listResponse)
         return RequestResult(status_code, None)
 
@@ -294,7 +294,7 @@ class GooglePlayAPI(object):
         if(filterByDevice):
             path += "&dfil=1"
         (status_code, message) = self.executeRequestApi2(path)
-        if status_code == httplib.OK:
+        if status_code == http.client.OK:
             return RequestResult(status_code, message.payload.reviewResponse)
         return RequestResult(status_code, None)
 
@@ -305,7 +305,7 @@ class GooglePlayAPI(object):
         if (offset is not None):
             path += "&o=%d" % int(offset)
         (status_code, message) = self.executeRequestApi2(path)
-        if status_code == httplib.OK:
+        if status_code == http.client.OK:
             return RequestResult(status_code, message.payload.listResponse)
         return RequestResult(status_code, None)
 
@@ -322,7 +322,7 @@ class GooglePlayAPI(object):
             (status_code, message) = self.executeRequestApi2(path="purchase", datapost="ot=%d&doc=%s&vc=%d" % (offerType, packageName, versionCode))
 
         return_objects = []
-        if status_code == httplib.OK:
+        if status_code == http.client.OK:
             if packageName == "com.android.vending":
                 url = message.payload.deliveryResponse.appDeliveryData.downloadUrl
                 cookie = message.payload.deliveryResponse.appDeliveryData.downloadAuthCookie[0]
@@ -343,7 +343,7 @@ class GooglePlayAPI(object):
             all_urls = [url] + additionnal_urls
             for url_to_download in all_urls:
               response = requests.get(url_to_download, headers=headers, cookies=cookies, proxies=self.proxy_dict, verify=True)
-              if response.status_code != httplib.OK:
+              if response.status_code != http.client.OK:
                   return_objects.append((response.status_code, None))  # returns the reponse-status_code of the 2nd request
               else:
                   return_objects.append(RequestResult(response.status_code, response.content))  # take care that this response is different from the other return functions, it concerns the APK content itself (of the 2nd request)
@@ -359,7 +359,7 @@ class GooglePlayAPI(object):
         path = "selfUpdate"
         (status_code, message) = self.executeRequestApi2(path, agentvername=agentvername, agentvercode=agentvercode)
         try:
-            if status_code == httplib.OK and message.payload.selfUpdate and message.payload.selfUpdate.versionCode != 0:
+            if status_code == http.client.OK and message.payload.selfUpdate and message.payload.selfUpdate.versionCode != 0:
                 return message.payload.selfUpdate.versionCode
         except:
             pass
