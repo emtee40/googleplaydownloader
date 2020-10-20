@@ -10,11 +10,11 @@ You should have received a copy of the GNU Affero General Public License along w
 """
 
 from __future__ import absolute_import
-import wx, platform, os, sys, thread, subprocess, urllib, json
+import wx, platform, os, sys, _thread, subprocess, urllib, json
 import zipfile
-import ConfigParser as configparser
+import configparser
 from wx.lib.mixins.listctrl import ListCtrlAutoWidthMixin
-import wx.lib.hyperlink as hl
+import wx.lib.agw.hyperlink as hl
 import webbrowser
 
 HERE = os.path.abspath(os.path.dirname(__file__))
@@ -139,11 +139,11 @@ def analyse_local_apks(list_of_apks, playstore_api, download_folder_path, dlg, r
     try:
       app = androguard_apk.APK(filepath)
     except zipfile.BadZipfile:
-      print "Cannot read APK %s." % filename
+      print("Cannot read APK %s." % filename)
       continue
     packagename = app.get_package()
     if packagename == '':
-      print "Cannot read informations on %s." % filename
+      print ("Cannot read informations on %s." % filename)
       continue
 
     try:
@@ -344,7 +344,7 @@ class MainPanel(wx.Panel):
                                    parent=self,
                                    style = wx.PD_AUTO_HIDE
                                    )
-        thread.start_new_thread(analyse_local_apks, (list_of_apks, self.playstore_api, download_folder_path, dlg, self.prepare_download_updates))
+        _thread.start_new_thread(analyse_local_apks, (list_of_apks, self.playstore_api, download_folder_path, dlg, self.prepare_download_updates))
 
 
 
@@ -505,7 +505,7 @@ class MainPanel(wx.Panel):
                                  parent=self,
                                  style = wx.PD_CAN_ABORT| wx.PD_AUTO_HIDE
                                  )
-        thread.start_new_thread(download_selection, (self.playstore_api, list_of_packages_to_download, dlg, self.after_download))
+        _thread.start_new_thread(download_selection, (self.playstore_api, list_of_packages_to_download, dlg, self.after_download))
 
 
   def prepare_download_updates(self, list_apks_to_update):
@@ -531,7 +531,7 @@ class MainPanel(wx.Panel):
                                  parent=self,
                                  style = wx.PD_CAN_ABORT|wx.PD_AUTO_HIDE
                                  )
-        thread.start_new_thread(download_selection, (self.playstore_api, list_of_packages_to_download, dlg, self.after_download))
+        _thread.start_new_thread(download_selection, (self.playstore_api, list_of_packages_to_download, dlg, self.after_download))
 
 class ConfigDialog(wx.Dialog):
   def __init__(self, parent):
